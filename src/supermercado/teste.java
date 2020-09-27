@@ -33,17 +33,28 @@ public class teste {
 		Supermercado s4 = new Supermercado("mercado 4", new ArrayList<Produto>(Arrays.asList(p13, p14, p15, p16)));
 		
 		Compras c = new Compras(new ArrayList<Supermercado>(Arrays.asList(s1, s2, s3, s4)));
-		ArrayList<Supermercado> s = c.menorValorProduto(new ArrayList<String> (Arrays.asList("Café", "Arroz")));
+		String v[] = {"cafee", "Arroz"};
+		ArrayList<Supermercado> s = c.menorValorProduto(new ArrayList<String> (Arrays.asList(v)));
 		
 		System.out.println("     Lista dos produtos com o menor preço");
 		System.out.println();
 		for(int i = 0; i < s.size(); i++) {
-			System.out.println("----------- "+ s.get(i).getProdutos().get(0).getNome()+" -----------");
-			System.out.println();
-			System.out.println("nome do supermercado: "+ s.get(i).getNome());
-			System.out.println("preço do produto: "+ s.get(i).getProdutos().get(0).getPreco());
-			System.out.println();
-		}
+			if(s.get(i).getNome().equals("produto nao encontrado")) {
+				System.out.println("O produto '"+ s.get(i).getProdutos().get(0).getNome()+"' não foi encontrado");
+				System.out.println();
+			} else {
+				System.out.println("----------- "+ s.get(i).getProdutos().get(0).getNome()+" -----------");
+				System.out.println();
+				System.out.println("nome do supermercado: "+ s.get(i).getNome());
+				System.out.println("preço do produto: "+ s.get(i).getProdutos().get(0).getPreco());
+				System.out.println();
+				System.out.print("Supermercados consultados: ");
+				ArrayList<Supermercado> supsConsultados = c.mercadosConsultados(v[i]);
+				for(int j = 0; j < supsConsultados.size(); j++) {
+					System.out.print("'"+supsConsultados.get(j).getNome()+ "' ");
+				}
+			}
 		
+		}
 	}
 }

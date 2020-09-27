@@ -20,10 +20,12 @@ public class Compras{
 		
 		ArrayList<Supermercado> sups = new ArrayList<Supermercado>();
 		int quantSups = supermercados.size();
-		int contador = 0;
+		int verificarProduto[] = new int[produtos.size()];
+		
 		for(int i = 0; i < produtos.size(); i++) {
 			int j;
-			float menorPreco = (float) -1.0;
+			float menorPreco = (float) -1.0;		
+			verificarProduto[i] = 0;
 			for (j = 0; j < quantSups; j++) {
 				int quantProdutos = supermercados.get(j).getProdutos().size();
 				for(int k = 0; k < quantProdutos; k++) {
@@ -42,11 +44,37 @@ public class Compras{
 							sups.get(i).getProdutos().get(0).setNome(supermercados.get(j).getProdutos().get(k).getNome());
 							sups.get(i).getProdutos().get(0).setPreco(supermercados.get(j).getProdutos().get(k).getPreco());
 						}
+						verificarProduto[i]++;
 					} 
 				}
 			}
-			contador++;
+			if(verificarProduto[i] == 0) {
+				Produto p = new Produto(produtos.get(i), (float) 2.5);
+				Supermercado s = new Supermercado("produto nao encontrado", new ArrayList<Produto>(Arrays.asList(p)));
+				sups.add(s);				
+
+			}
 		}
+		return sups;
+	} 
+	
+public ArrayList<Supermercado> mercadosConsultados(String produto) {
+		
+		ArrayList<Supermercado> sups = new ArrayList<Supermercado>();
+		int quantSups = supermercados.size();
+		
+		for(int i = 0; i < quantSups; i++) {
+			int quantProdutos = supermercados.get(i).getProdutos().size();
+			for(int j = 0; j < quantProdutos; j++) {
+				if(produto.equals(supermercados.get(i).getProdutos().get(j).getNome())) {
+					String nomeSuper = supermercados.get(i).getNome();
+					Produto p = new Produto(supermercados.get(i).getProdutos().get(j).getNome(), 
+							supermercados.get(i).getProdutos().get(j).getPreco());
+					Supermercado s = new Supermercado( nomeSuper, new ArrayList<Produto>(Arrays.asList(p)));
+					sups.add(s);
+				}
+			}
+		}	
 		return sups;
 	} 
 
