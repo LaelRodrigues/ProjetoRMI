@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import supermercado.ComprasImpl;
+import supermercado.ComprasInterface;
 import supermercado.Supermercado;
 
 
@@ -13,7 +14,7 @@ public class Cliente {
 		String ip = "192.168.0.11";
 		String port = "1099";
 		try {
-			ComprasImpl c = (ComprasImpl) Naming.lookup("rmi://"+ip+":"+port+"/ComprasService");
+			ComprasInterface c = (ComprasInterface) Naming.lookup("rmi://"+ip+":"+port+"/ComprasService");
 			System.out.println("O que deseja comprar?");
 			Scanner in = new Scanner(System.in);
 			String produto = "";
