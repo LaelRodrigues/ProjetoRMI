@@ -18,6 +18,7 @@ public class Servidor {
 			LocateRegistry.createRegistry(port);//Default rmi
 			
 			//Inicializando estaticamente
+			System.out.println("Estanciando Supermercados");
 			Produto p1 = new Produto("Açucar", (float) 2.90);
 			Produto p2 = new Produto("Fubá", (float) 2.65);
 			Produto p3 = new Produto("Feijão", (float) 8.05);
@@ -46,7 +47,7 @@ public class Servidor {
 			
 			ComprasInterface compras = new ComprasImpl(
 					new ArrayList<Supermercado>(Arrays.asList(s1, s2, s3, s4)));
-			
+			System.out.println("Ouvindo...");
 			Naming.bind("ComprasService", (Remote) compras);
 		} catch (Exception e) {
 			e.printStackTrace();

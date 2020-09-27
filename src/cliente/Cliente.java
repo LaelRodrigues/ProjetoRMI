@@ -4,7 +4,6 @@ import java.rmi.Naming;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import supermercado.ComprasImpl;
 import supermercado.ComprasInterface;
 import supermercado.Supermercado;
 
@@ -28,8 +27,10 @@ public class Cliente {
 			in.close();
 			System.out.println("Consultando...");
 			
+			//Espera o resultado do servidor
 			ArrayList<Supermercado> s = c.menorValorProduto(listaCompras);
 			
+			//Imprime na tela
 			System.out.println("Lista dos produtos com o menor preço");
 			System.out.println();
 			for(int i = 0; i < s.size(); i++) {

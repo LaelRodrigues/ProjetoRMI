@@ -1,7 +1,13 @@
 package supermercado;
 
-public class Produto {
+import java.rmi.RemoteException;
+
+public class Produto extends RemoteException{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private float preco;
 	

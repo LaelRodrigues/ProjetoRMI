@@ -1,9 +1,14 @@
 package supermercado;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class Supermercado {
+public class Supermercado extends RemoteException{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private ArrayList<Produto> produtos = new ArrayList<Produto>();
 	

@@ -7,9 +7,6 @@ import java.util.Arrays;
 
 public class ComprasImpl extends UnicastRemoteObject implements ComprasInterface{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	protected ComprasImpl() throws RemoteException{
