@@ -61,8 +61,17 @@ public class ComprasImpl extends UnicastRemoteObject implements ComprasInterface
 		}
 		return sups;
 	} 
-	
-public ArrayList<Supermercado> mercadosConsultados(String produto) {
+
+	public ArrayList<Supermercado> getSupermercados() {
+		return supermercados;
+	}
+
+	public void setSupermercados(ArrayList<Supermercado> supermercados) {
+		this.supermercados = supermercados;
+	}
+
+	@Override
+	public ArrayList<Supermercado> mercadosConsultado(String produto) throws RemoteException {
 		
 		ArrayList<Supermercado> sups = new ArrayList<Supermercado>();
 		int quantSups = supermercados.size();
@@ -80,13 +89,5 @@ public ArrayList<Supermercado> mercadosConsultados(String produto) {
 			}
 		}	
 		return sups;
-	} 
-
-	public ArrayList<Supermercado> getSupermercados() {
-		return supermercados;
-	}
-
-	public void setSupermercados(ArrayList<Supermercado> supermercados) {
-		this.supermercados = supermercados;
 	} 
 }

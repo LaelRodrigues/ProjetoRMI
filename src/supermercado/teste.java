@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class teste {
 
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		
 		Produto p1 = new Produto("Açúcar", (float) 2.90);
 		Produto p2 = new Produto("Fubá", (float) 2.65);
@@ -56,5 +56,5 @@ public class teste {
 			}
 		
 		}
-	}
+	}**/
 }

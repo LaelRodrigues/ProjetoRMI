@@ -8,5 +8,8 @@ public interface ComprasInterface extends Remote{
 	
 	public ArrayList<Supermercado> menorValorProduto(
 			ArrayList<String> listaDeCompras) throws RemoteException;
+	
+	public ArrayList<Supermercado> mercadosConsultado(String produto) throws RemoteException;
+
 
 }
