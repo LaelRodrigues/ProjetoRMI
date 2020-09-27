@@ -1,35 +1,42 @@
 package supermercado;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Compras{
+public class ComprasImpl extends UnicastRemoteObject implements ComprasInterface{
 	
-	protected Compras() {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected ComprasImpl() throws RemoteException{
 		super();
 	}
 	
-	public Compras(ArrayList<Supermercado> supermercados) {
+	public ComprasImpl(ArrayList<Supermercado> supermercados) throws RemoteException{
 		super();
 		this.supermercados = supermercados;
 	}
 	
 	private ArrayList<Supermercado> supermercados = new ArrayList<Supermercado>();
 	
-	public ArrayList<Supermercado> menorValorProduto(ArrayList<String> produtos) {
+	public ArrayList<Supermercado> menorValorProduto(ArrayList<String> listaCompras) {
 		
 		ArrayList<Supermercado> sups = new ArrayList<Supermercado>();
 		int quantSups = supermercados.size();
-		int verificarProduto[] = new int[produtos.size()];
+		int verificarProduto[] = new int[listaCompras.size()];
 		
-		for(int i = 0; i < produtos.size(); i++) {
+		for(int i = 0; i < listaCompras.size(); i++) {
 			int j;
 			float menorPreco = (float) -1.0;		
 			verificarProduto[i] = 0;
 			for (j = 0; j < quantSups; j++) {
 				int quantProdutos = supermercados.get(j).getProdutos().size();
 				for(int k = 0; k < quantProdutos; k++) {
-					if(produtos.get(i).equals(supermercados.get(j).getProdutos().get(k).getNome())) {
+					if(listaCompras.get(i).equals(supermercados.get(j).getProdutos().get(k).getNome())) {
 						if(menorPreco == -1.0) {
 							menorPreco = supermercados.get(j).getProdutos().get(k).getPreco();
 							String nomeSuper = supermercados.get(j).getNome();
@@ -49,7 +56,7 @@ public class Compras{
 				}
 			}
 			if(verificarProduto[i] == 0) {
-				Produto p = new Produto(produtos.get(i), (float) 2.5);
+				Produto p = new Produto(listaCompras.get(i), (float) 2.5);
 				Supermercado s = new Supermercado("produto nao encontrado", new ArrayList<Produto>(Arrays.asList(p)));
 				sups.add(s);				
 
